@@ -28,6 +28,7 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const postcssNormalize = require('postcss-normalize');
+const { web } = require('webpack');
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -737,6 +738,9 @@ module.exports = function (webpackEnv) {
             },
           },
         }),
+      new webpack.DefinePlugin({
+        TEST: "test_string_here",
+      })
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
